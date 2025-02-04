@@ -1,0 +1,132 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "product": "Молоко",
+      "description": "Молоко коровье натуральное пастеризованное 3%",
+      "image": "/static/images/milk.jpg",
+      "category": 1,
+      "price": 150.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "product": "Хлеб",
+      "description": "Хлеб белый стандартный",
+      "image": "/static/images/bread.jpg",
+      "category": 1,
+      "price": 100.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "product": "Яйца",
+      "description": "Яйца 1С",
+      "image": "/static/images/eggs.png",
+      "category": 1,
+      "price": 100.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "product": "Пармезан",
+      "description": "Итальянский твёрдый сыр, изготовленный из натурального молока белорусских коров.",
+      "image": "/static/images/cheese.jpg",
+      "category": 1,
+      "price": 100.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "product": "Шорты",
+      "description": "Шорты мужские, размер 50-58",
+      "image": "/static/images/shorts.png",
+      "category": 2,
+      "price": 5000.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "product": "Сорочка мужская",
+      "description": "Сорочка мужская классическая",
+      "image": "/static/images/polo-shirt.png",
+      "category": 2,
+      "price": 7000.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "product": "Термобельё",
+      "description": "Термобельё утеплённое зимнее",
+      "image": "/static/images/thermal-pants.png",
+      "category": 2,
+      "price": 7990.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "product": "Samsung Galaxy S23 Ultra",
+      "description": "256GB, Серый цвет, 200MP камера",
+      "image": "/static/images/samsung_galaxy.ipg",
+      "category": 3,
+      "price": 180000.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "product": "Iphone 15",
+      "description": "512GB, Gray space",
+      "image": "/static/images/iphone.jpg",
+      "category": 3,
+      "price": 210000.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "product": "Xiaomi Redmi Note 11",
+      "description": "1024GB, Синий",
+      "image": "/static/images/redmi.png",
+      "category": 3,
+      "price": 31000.0,
+      "created_at": "2024-12-24",
+      "changed_at": "2024-12-24"
+    }
+  }
+]

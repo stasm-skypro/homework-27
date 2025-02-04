@@ -1,0 +1,38 @@
+[
+{
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+      "title": "Отзыв о товаре кроссовки Reebok Durable Xt",
+      "content": "Отличные кроссовки, удобная колодка, дышащий материал. Всем рекомендую.",
+      "preview": "",
+      "created_at": "2024-12-24",
+      "publicated": false,
+      "views_counter": 0
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+      "title": "Сыр Пармезан",
+      "content": "Очень вкусный сыр, необыкновенный запах, подходит для бутербродов.",
+      "preview": "",
+      "created_at": "2024-12-25",
+      "publicated": false,
+      "views_counter": 0
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 3,
+    "fields": {
+      "title": "Шорты",
+      "content": "Шорты шикарные, слегка маломерят.",
+      "preview": "",
+      "created_at": "2024-12-26",
+      "publicated": false,
+      "views_counter": 0
+    }
+  }
+]

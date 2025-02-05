@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
         help_text="Введите номер телефона",
     )
     avatar = models.ImageField(verbose_name="Аватар", blank=True, null=True, upload_to="users/")
-    country = models.CharField(max_length="50", verbose_name="Страна", help_text="Введите страну", blank=True, null=True)
+    country = models.CharField(max_length=50, verbose_name="Страна", help_text="Введите страну", blank=True, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

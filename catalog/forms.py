@@ -25,28 +25,6 @@ class CategoryForm(StyledFormMixin, forms.ModelForm):
             "description": "Описание",
         }
 
-        
-    # Закоментированный ниже код заменяем на класс-миксин
-    # def __init__(self, *args, **kwargs):
-    #     """Стилизация формы добавления категории."""
-    #     super(CategoryForm, self).__init__(*args, **kwargs)
-    #
-    #     for _, field in self.fields.items():
-    #         if isinstance(field, forms.BooleanField):
-    #             field.widget.attrs.update(
-    #                 {
-    #                     "class": "form-check-input",
-    #                 }
-    #             )
-    #         else:
-    #             field.widget.attrs.update(
-    #                 {
-    #                     "class": "form-control",
-    #                     "placeholder": field.label,
-    #                     "style": "font-size: 0.9em; width: 100%",
-    #                 }
-    #             )
-
     def clean(self):
         forbidden_words = os.getenv("FORBIDDEN_WORDS").split(",")
         cleaned_data = super().clean()
@@ -56,8 +34,7 @@ class CategoryForm(StyledFormMixin, forms.ModelForm):
             if word.lower() in forbidden_words:
                 self.add_error(
                     "name",
-                    "Поле с наименованием категории содержит запрещённое слово %s."
-                    % word,
+                    "Поле с наименованием категории содержит запрещённое слово %s." % word,
                 )
                 break
 
@@ -92,35 +69,11 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
             "views_counter": "Количество просмотров",
         }
 
-    
-    # Закоментированный ниже код заменяем на класс-миксин
-    # def __init__(self, *args, **kwargs):
-    #    """Осуществляет стилизацию формы."""
-    #    super(ProductForm, self).__init__(*args, **kwargs)
-        #
-        # for _, field in self.fields.items():
-        #     if isinstance(field, forms.BooleanField):
-        #         field.widget.attrs.update(
-        #             {
-        #                 "class": "form-check-input",
-        #             }
-        #         )
-        #     else:
-        #         field.widget.attrs.update(
-        #             {
-        #                 "class": "form-control",
-        #                 "placeholder": field.label,
-        #                 "style": "font-size: 0.9em; width: 100%",
-        #             }
-        #         )
-
     def clean_price(self):
         """Проверяет, что введена неотрицательная цена."""
         cleaned_price = self.cleaned_data.get("price")
         if cleaned_price < 0:
-            raise ValidationError(
-                "Вы указали недопустимое значение цены! Цена не может быть отрицательной!"
-            )
+            raise ValidationError("Вы указали недопустимое значение цены! Цена не может быть отрицательной!")
 
         return cleaned_price
 
@@ -133,9 +86,7 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
             valid_extensions = [".jpg", ".jpeg", ".png"]
             ext = os.path.splitext(image.name)[1].lower()
             if ext not in valid_extensions:
-                raise ValidationError(
-                    "Допустимые форматы изображений: .jpg, .jpeg, .png."
-                )
+                raise ValidationError("Допустимые форматы изображений: .jpg, .jpeg, .png.")
 
         return image
 
@@ -161,8 +112,7 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
             if word.lower() in forbidden_words:
                 self.add_error(
                     "product",
-                    "Поле с наименованием продукта содержит запрещённое слово %s."
-                    % word,
+                    "Поле с наименованием продукта содержит запрещённое слово %s." % word,
                 )
                 break
 

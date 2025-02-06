@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserUpdateForm
 from users.models import CustomUser
 
 
@@ -57,3 +57,18 @@ class UserLogoutView(LogoutView):
         """Обработчик GET-запроса для выхода"""
         logout(request)
         return redirect("catalog:product_list")
+
+
+class UserUpdateView(CreateView):
+    """Класс для создания представления редактирования профиля пользователя."""
+
+    model = CustomUser
+    form_class = UserUpdateForm
+    template_name = "users/user_update.html"
+    success_url = reverse_lazy("catalog:product_list")
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        self.send_welcome_email(user.email)
+        return super().form_valid(form)

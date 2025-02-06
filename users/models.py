@@ -5,7 +5,13 @@ from django.db import models
 class CustomUser(AbstractUser):
     """Класс для определения модели Пользователя"""
 
-    username = None
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        verbose_name="Имя пользователя",
+        help_text="Введите имя пользователя",
+        default="default_username",
+    )
     email = models.EmailField(
         unique=True,
         verbose_name="Адрес электронной почты",
@@ -28,7 +34,5 @@ class CustomUser(AbstractUser):
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
 
-    
     def __str__(self):
         return self.email
-

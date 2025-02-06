@@ -3,8 +3,21 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">Skystore</h5>
     <nav class="ms-5 d-flex justify-content-center flex-grow-1 gap-3">
         <div class="btn-group" style="width: 50%;">
-            <a class="p-2 btn btn-light" style="border-radius: 25px;" href="/">Каталог</a>
-            <a class="p-2 btn btn-light" style="border-radius: 25px;" href="/blog/blog_list/">Блог</a>
+            <a class="p-2 btn btn-light" style="border-radius: 25px;"
+                href="{% url 'catalog:product_list' %}">Каталог</a>
+            <a class="p-2 btn btn-light" style="border-radius: 25px;" href="{% url 'blog:blog_list' %}">Блог</a>
+        </div>
+        <div class="btn-group justify-content-end" style="width: 20%;">
+            {% if user.is_authenticated %}
+            {% csrf_token %}
+            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
+                href="{% url 'users:logout' %}">Выйти</a>
+            {% else %}
+            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
+                href="{% url 'users:register' %}">Регистрация</a>
+            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
+                href="{% url 'users:login' %}">Войти</a>
+            {% endif %}
         </div>
     </nav>
 </div>

@@ -1,3 +1,7 @@
+"""
+Контроллеры, определённые внутри приложения users.
+"""
+
 from django.contrib.auth import logout, login
 from django.core.mail import send_mail
 from django.shortcuts import redirect
@@ -34,6 +38,7 @@ class UserLoginView(LoginView):
     """Класс для создания представления входа пользователя."""
 
     template_name = "users/login.html"
+    context_object_name = "user"
 
     def get_success_url(self):
         return reverse_lazy("catalog:product_list")
@@ -42,7 +47,7 @@ class UserLoginView(LoginView):
 def custom_logout(requesst):
     """Производит выход пользователя из системы."""
     logout(requesst)
-    return redirect("catalog:product_list")
+    return redirect(reverse_lazy("catalog:product_list"))
 
 
 class UserLogoutView(LogoutView):

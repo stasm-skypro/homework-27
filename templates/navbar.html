@@ -12,6 +12,8 @@
             {% csrf_token %}
             <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
                 href="{% url 'users:logout' %}">Выйти</a>
+            <img src="{{ user.avatar.url }}" alt="{{ object.username }}" class="rounded-circle"
+                style="max-width: 48px" />
             {% else %}
             <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
                 href="{% url 'users:register' %}">Регистрация</a>

@@ -6,7 +6,7 @@ from users.models import CustomUser
 class UserRegisterForm(StyledFormMixin, UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "avatar", "password1", "password2")
         labels = {
             "username": "Имя пользователя",
             "email": "Адрес электронной почты",

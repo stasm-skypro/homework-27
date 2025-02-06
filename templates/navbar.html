@@ -10,15 +10,15 @@
         <div class="btn-group justify-content-end" style="width: 20%;">
             {% if user.is_authenticated %}
             {% csrf_token %}
-            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
-                href="{% url 'users:logout' %}">Выйти</a>
+            <a href="{% url 'users:logout' %}" class="p-2 btn btn-secondary-link"
+                style="color: #34373a; font-size: 0.9rem;">Выйти</a>
             <img src="{{ user.avatar.url }}" alt="{{ object.username }}" class="rounded-circle"
-                style="max-width: 48px" />
+                style="max-width: 18%" />
             {% else %}
-            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
-                href="{% url 'users:register' %}">Регистрация</a>
-            <a class="p-2 btn btn-secondary-link" style="color: #adb5bd; font-size: 0.9rem;"
-                href="{% url 'users:login' %}">Войти</a>
+            <a href="{% url 'users:register' %}" class="p-2 btn btn-secondary-link"
+                style="color: #34373a; font-size: 0.9rem;">Регистрация</a>
+            <a href="{% url 'users:login' %}" class="p-2 btn btn-secondary-link"
+                style="color: #34373a; font-size: 0.9rem;">Войти</a>
             {% endif %}
         </div>
     </nav>

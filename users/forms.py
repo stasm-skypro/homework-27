@@ -13,6 +13,8 @@ load_dotenv()
 class UserRegisterForm(StyledFormMixin, UserCreationForm):
     """Класс для создания формы регистрации пользователя с изображением аватара."""
 
+    usable_password = None
+
     class Meta:
         model = CustomUser
         fields = ("username", "email", "avatar", "password1", "password2")
@@ -29,6 +31,14 @@ class UserRegisterForm(StyledFormMixin, UserCreationForm):
             "password1": "Введите пароль",
             "password2": "Подтвердите пароль",
         }
+
+    def clean_phone_number(self) -> str:
+        cleaned_phone_number = self.cleaned_data.get("phone_number", "").strip()
+
+        if cleaned_phone_number and not cleaned_phone_number.isdigit():
+            raise ValidationError("Номер телефона должен содержать только цифры!")
+
+        return cleaned_phone_number
 
     def clean_image_format(self):
         """
@@ -76,7 +86,6 @@ class UserUpdateForm(StyledFormMixin, UserCreationForm):
     class Meta:
         model = CustomUser
         fields = (
-            "username",
             "avatar",
             "first_name",
             "last_name",
@@ -86,7 +95,6 @@ class UserUpdateForm(StyledFormMixin, UserCreationForm):
         )
 
         labels = {
-            "username": "Имя пользователя",
             "avatar": "Аватар",
             "first_name": "Имя",
             "last_name": "Фамилия",
@@ -98,7 +106,6 @@ class UserUpdateForm(StyledFormMixin, UserCreationForm):
         }
 
         help_texts = {
-            "username": "Введите имя пользователя",
             "avatar": "Изображение аватара",
             "first_name": "Введите имя",
             "last_name": "Введите фамилию",

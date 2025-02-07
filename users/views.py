@@ -70,12 +70,9 @@ def custom_logout(requesst):
 
 
 class UserLogoutView(LogoutView):
-    """Класс для создания представления выхода пользователя. НЕ РАБОТАЕТ!"""
+    """Класс для создания представления выхода пользователя. ПРОВЕРИТЬ!"""
 
-    def get(self, request, *args, **kwargs):
-        """Обработчик GET-запроса для выхода"""
-        logout(request)
-        return redirect("catalog:product_list")
+    next_page = "catalog:product_list"
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):

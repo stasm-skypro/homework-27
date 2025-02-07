@@ -30,6 +30,7 @@ class UserRegisterView(CreateView):
     success_url = reverse_lazy("catalog:product_list")
 
     def form_valid(self, form):
+        """Проверяет статус регистрации пользователя и отправляет уведомление администратору."""
         user = form.save()
         login(self.request, user)
         logger.info("Пользователь '%s' успешно зарегистрирован." % self.object.user_name)
@@ -39,16 +40,15 @@ class UserRegisterView(CreateView):
 
     # Отправка сообщения на email пользователя при успешной регистрации
     def send_welcome_email(self, user_email):
+        """Отправляет сообщение на email пользователя при успешной регистрации."""
         subject = "Добро пожаловать на сайт!"
         message = "Спасибо за регистрацию! Мы рады видеть вас среди нас."
         from_email = "stasm226@gmail.com"
-        recipients = ["stasm226@gmail.com"]
+        recipients = [user_email]
         send_mail(subject, message, from_email, recipients)
 
     def form_invalid(self, form):
-        """
-        Обработка в случае неверной формы.
-        """
+        """Обработка в случае неверной формы."""
         logger.warning("Ошибка при регистрации пользователя: %s" % form.errors)
         return super().form_invalid(form)
 
@@ -60,6 +60,7 @@ class UserLoginView(LoginView):
     context_object_name = "user"
 
     def get_success_url(self):
+        """Обновляет URL после успешного входа."""
         return reverse_lazy("catalog:product_list")
 
 
@@ -84,13 +85,12 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("catalog:product_list")
 
     def form_valid(self, form):
+        """Дополнительная обработка перед сохранением формы."""
         self.object = form.save()  # Сохраняем объект формы в базу
         logger.info("Профиль пользователь '%s' успешно обновлён." % self.object.user_name)
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        """
-        Обработка в случае неверной формы.
-        """
+        """Обработка в случае неверной формы."""
         logger.warning("Ошибка при обновлении профиля пользователя: %s" % form.errors)
         return super().form_invalid(form)

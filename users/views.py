@@ -77,7 +77,7 @@ class UserLogoutView(LogoutView):
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
-    """Класс для создания представления редактирования профиля пользователя."""
+    """Класс представления для редактирования профиля пользователя."""
 
     model = CustomUser
     form_class = UserUpdateForm
